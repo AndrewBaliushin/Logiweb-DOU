@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title><ui:insert name="title" /></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet name="css/foundation.css" />
+	<h:outputStylesheet name="css/foundation-icons.css" />
+	<h:outputStylesheet name="css/footer.css" />
+	<h:outputScript name="js/vendor/modernizr.js" />
+</h:head>
+
+<h:body>
+
+	<!-- Menu -->
+	<div class="top-bar">
+		<ul class="title-area">
+			<li class="name">
+				<h1>
+					<a href="#">Logiweb DOU</a>
+				</h1>
+			</li>
+		</ul>
+
+		<div class="top-bar-section">
+			<!-- Left Nav Section -->
+			<ul class="left">
+				<li><h:link value="Home page" outcome="frontPage.xhtml" /></li>
+			</ul>
+		</div>
+	</div>
+	<!-- /menu -->
+
+	<!-- Content -->
+	<ui:insert name="content">
+               [Template content will be inserted here]
+    </ui:insert>
+	<!-- /content -->
+
+	<!-- Footer -->
+	<div class="footer">
+		<div class="row">
+			<div class="small-12 medium-6 large-5 columns">
+				<p class="logo">
+					<i class="fi-laptop"></i> Logiweb@JavaSchool#14
+				</p>
+			</div>
+			<div class="small-12 medium-6 large-4 columns">
+				<ul class="contact">
+					<li><p>
+							<i class="fi-torso"></i>Andrey Baliushin
+						</p></li>
+				</ul>
+			</div>
+			<div class="small-12 medium-12 large-3 columns">
+				<p class="contact"><a href="https://github.com/AndrewBaliushin"><i class="fi-social-github"></i> GitHub</a></p>				
+			</div>
+		</div>
+	</div>
+	<!-- /footer -->
+
+</h:body>
+
+</html>
