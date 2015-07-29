@@ -1,23 +1,29 @@
 package com.tsystems.javaschool.dou.controller;
 
 import javax.ejb.EJB;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import com.tsystems.javaschool.dou.ejb.DriverServiceClient;
 
-@Named("driverMenu")
+@ManagedBean
+@RequestScoped
 public class DriverMenuController {
 
     @EJB
     private DriverServiceClient driverServiceClient;
     
-    public String test() {
-        driverServiceClient.setStatusDrivingForDriver(1);
-        return driverServiceClient.test();
-    }
+    private int driverEmpoloyeeId;
     
-    public void testSoap() {
-        driverServiceClient.setStatusDrivingForDriver(1);
+    public int getDriverEmpoloyeeId() {
+        return driverEmpoloyeeId;
     }
 
+    public void setDriverEmpoloyeeId(int driverEmpoloyeeId) {
+        this.driverEmpoloyeeId = driverEmpoloyeeId;
+    }
+    
+    public String getDriverInfo() {
+        return driverServiceClient.getDriverInfo(driverEmpoloyeeId);
+    }
 }

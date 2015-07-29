@@ -1,7 +1,6 @@
 package com.tsystems.javaschool.logiweb.webservices;
 
 import javax.jws.WebParam;
-import javax.jws.WebResult;
 import javax.jws.WebService;
 
 @WebService
@@ -14,7 +13,6 @@ public interface DriverWebService {
     void setStatusRestingForDriver(
             @WebParam(name = "DriverEmployeeId") int driverEmployeeId);
 
-    @WebResult(targetNamespace = "")
     void setStatusDrivingForDriver(
             @WebParam(name = "DriverEmployeeId") int driverEmployeeId);
 
@@ -27,4 +25,6 @@ public interface DriverWebService {
      */
     void setStatusDeliveredForCargoAndFinilizeOrderIfPossible(@WebParam(name = "CargoId") int cargoId);
 
+    String getDriverInfo(
+            @WebParam(name = "DriverEmployeeId") int driverEmployeeId);
 }
