@@ -23,6 +23,6 @@
 
 	<!-- Welcome files -->
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>frontPage.xhtml</welcome-file>
 	</welcome-file-list>
 </web-app>
