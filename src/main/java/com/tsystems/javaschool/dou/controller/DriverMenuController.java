@@ -1,8 +1,8 @@
 package com.tsystems.javaschool.dou.controller;
 
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.inject.Inject;
 
 import com.tsystems.javaschool.dou.ejb.DriverServiceClient;
 
@@ -10,7 +10,7 @@ import com.tsystems.javaschool.dou.ejb.DriverServiceClient;
 @RequestScoped
 public class DriverMenuController {
 
-    @EJB
+    @Inject
     private DriverServiceClient driverServiceClient;
     
     private int driverEmpoloyeeId;
