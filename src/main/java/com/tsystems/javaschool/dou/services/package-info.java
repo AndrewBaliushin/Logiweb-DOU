@@ -3,4 +3,4 @@
  * 
  * @author Andrew Baliushin
  */
-package com.tsystems.javaschool.dou.cdi;
+package com.tsystems.javaschool.dou.services;

@@ -1,4 +1,4 @@
-package com.tsystems.javaschool.dou.cdi;
+package com.tsystems.javaschool.dou.services;
 
 public interface IDriverService {
 

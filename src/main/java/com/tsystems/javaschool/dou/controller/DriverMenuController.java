@@ -4,8 +4,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
-import com.tsystems.javaschool.dou.cdi.IDriverService;
-import com.tsystems.javaschool.dou.cdi.qualifiers.RemoteServerClient;
+import com.tsystems.javaschool.dou.services.IDriverService;
+import com.tsystems.javaschool.dou.services.qualifiers.RemoteServerClient;
 
 @ManagedBean
 @SessionScoped

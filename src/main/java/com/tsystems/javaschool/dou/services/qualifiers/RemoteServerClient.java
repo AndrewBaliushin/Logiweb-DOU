@@ -1,4 +1,4 @@
-package com.tsystems.javaschool.dou.cdi.qualifiers;
+package com.tsystems.javaschool.dou.services.qualifiers;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;

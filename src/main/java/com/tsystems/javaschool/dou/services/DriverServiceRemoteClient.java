@@ -1,9 +1,9 @@
-package com.tsystems.javaschool.dou.cdi;
+package com.tsystems.javaschool.dou.services;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.xml.ws.WebServiceRef;
 
-import com.tsystems.javaschool.dou.cdi.qualifiers.RemoteServerClient;
+import com.tsystems.javaschool.dou.services.qualifiers.RemoteServerClient;
 import com.tsystems.javaschool.logiweb.webservices.WsDriver;
 import com.tsystems.javaschool.logiweb.webservices.WsDriverImplService;
 
