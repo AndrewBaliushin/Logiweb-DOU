@@ -1,20 +1,22 @@
 package com.tsystems.javaschool.dou.controller;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
-import com.tsystems.javaschool.dou.ejb.DriverServiceClient;
+import com.tsystems.javaschool.dou.cdi.IDriverService;
+import com.tsystems.javaschool.dou.cdi.qualifiers.RemoteServerClient;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class DriverMenuController {
 
     @Inject
-    private DriverServiceClient driverServiceClient;
-    
+    @RemoteServerClient
+    private IDriverService driverService;
+
     private int driverEmpoloyeeId;
-    
+
     public int getDriverEmpoloyeeId() {
         return driverEmpoloyeeId;
     }
@@ -22,8 +24,8 @@ public class DriverMenuController {
     public void setDriverEmpoloyeeId(int driverEmpoloyeeId) {
         this.driverEmpoloyeeId = driverEmpoloyeeId;
     }
-    
+
     public String getDriverInfo() {
-        return driverServiceClient.getDriverInfo(driverEmpoloyeeId);
+        return driverService.getDriverInfo(driverEmpoloyeeId);
     }
 }

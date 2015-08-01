@@ -1,43 +1,38 @@
-package com.tsystems.javaschool.dou.ejb;
+package com.tsystems.javaschool.dou.cdi;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.xml.ws.WebServiceRef;
 
+import com.tsystems.javaschool.dou.cdi.qualifiers.RemoteServerClient;
 import com.tsystems.javaschool.logiweb.webservices.WsDriver;
 import com.tsystems.javaschool.logiweb.webservices.WsDriverImplService;
 
 @ApplicationScoped
-public class DriverServiceClient {
+@RemoteServerClient
+public class DriverServiceRemoteClient implements IDriverService {
 
     public static final String SERVICE_URL = 
             "http://localhost:8080/logiweb/services/driver?wsdl";
     
     @WebServiceRef(wsdlLocation = SERVICE_URL)
     private static WsDriverImplService service;
-    
-    
-//    private DriverWebService getDriverWebServiceClient() {
-//        JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
-//        factory.setServiceClass(DriverWebService.class);
-//        factory.setAddress(SERVICE_URL);
-//        DriverWebService client = (DriverWebService) factory.create();
-//        return client;
-//    }
 
+    @Override
     public void setStatusRestingForDriver(int driverEmployeeId) {
         WsDriver driverWebService = service.getWsDriverImplPort();
         driverWebService.setStatusRestingForDriver(driverEmployeeId);
     }
 
+    @Override
     public void setStatusDrivingForDriver(int driverEmployeeId) {
         WsDriver driverWebService = service.getWsDriverImplPort();
         driverWebService.setStatusDrivingForDriver(driverEmployeeId);
     }
     
+    @Override
     public String getDriverInfo(int driverEmployeeId) {
-        if (driverEmployeeId == 0) return "Haha";
+        if (driverEmployeeId == 0) return "";
         
-//        WsDriverImplService service = new WsDriverImplService();
         WsDriver driverWebService = service.getWsDriverImplPort();
         return driverWebService.getDriverInfo(driverEmployeeId);
     }
