@@ -60,13 +60,13 @@ public interface WsDriver {
      * 
      * @param driverEmployeeId
      * @return
-     *     returns java.lang.String
+     *     returns com.tsystems.javaschool.logiweb.webservices.DriverInfo
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "getDriverInfo", targetNamespace = "http://webservices.logiweb.javaschool.tsystems.com/", className = "com.tsystems.javaschool.logiweb.webservices.GetDriverInfo")
     @ResponseWrapper(localName = "getDriverInfoResponse", targetNamespace = "http://webservices.logiweb.javaschool.tsystems.com/", className = "com.tsystems.javaschool.logiweb.webservices.GetDriverInfoResponse")
-    public String getDriverInfo(
+    public DriverInfo getDriverInfo(
         @WebParam(name = "DriverEmployeeId", targetNamespace = "")
         int driverEmployeeId);
 

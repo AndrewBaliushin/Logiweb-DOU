@@ -10,6 +10,7 @@
 	<h:outputStylesheet name="css/foundation.css" />
 	<h:outputStylesheet name="css/foundation-icons.css" />
 	<h:outputStylesheet name="css/footer.css" />
+	<h:outputStylesheet name="css/driverMenu.css" />
 	<h:outputScript name="js/vendor/modernizr.js" />
 </h:head>
 
@@ -21,8 +22,9 @@
 	<div class="top-bar">
 		<ul class="title-area">
 			<li class="name">
+			     
 				<h1>
-					<a href="#">Logiweb DOU</a>
+					<h:link value="Logiweb DOU" outcome="login" />
 				</h1>
 			</li>
 		</ul>
@@ -30,7 +32,7 @@
 		<div class="top-bar-section">
 			<!-- Left Nav Section -->
 			<ul class="left">
-				<li><h:link value="Home page" outcome="frontPage.xhtml" /></li>
+				<li><h:link value="Login page" outcome="login" /></li>
 			</ul>
 		</div>
 	</div>

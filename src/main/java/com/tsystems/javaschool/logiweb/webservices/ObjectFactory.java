@@ -45,19 +45,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetStatusPickedUpForCargo }
+     * Create an instance of {@link SetStatusDeliveredForCargoAndFinilizeOrderIfPossible }
      * 
      */
-    public SetStatusPickedUpForCargo createSetStatusPickedUpForCargo() {
-        return new SetStatusPickedUpForCargo();
+    public SetStatusDeliveredForCargoAndFinilizeOrderIfPossible createSetStatusDeliveredForCargoAndFinilizeOrderIfPossible() {
+        return new SetStatusDeliveredForCargoAndFinilizeOrderIfPossible();
     }
 
     /**
-     * Create an instance of {@link SetStatusDeliveredForCargoAndFinilizeOrderIfPossibleResponse }
+     * Create an instance of {@link RouteInformation }
      * 
      */
-    public SetStatusDeliveredForCargoAndFinilizeOrderIfPossibleResponse createSetStatusDeliveredForCargoAndFinilizeOrderIfPossibleResponse() {
-        return new SetStatusDeliveredForCargoAndFinilizeOrderIfPossibleResponse();
+    public RouteInformation createRouteInformation() {
+        return new RouteInformation();
     }
 
     /**
@@ -69,27 +69,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetStatusRestingForDriverResponse }
+     * Create an instance of {@link SetStatusRestingForDriver }
      * 
      */
-    public SetStatusRestingForDriverResponse createSetStatusRestingForDriverResponse() {
-        return new SetStatusRestingForDriverResponse();
-    }
-
-    /**
-     * Create an instance of {@link SetStatusPickedUpForCargoResponse }
-     * 
-     */
-    public SetStatusPickedUpForCargoResponse createSetStatusPickedUpForCargoResponse() {
-        return new SetStatusPickedUpForCargoResponse();
-    }
-
-    /**
-     * Create an instance of {@link SetStatusDeliveredForCargoAndFinilizeOrderIfPossible }
-     * 
-     */
-    public SetStatusDeliveredForCargoAndFinilizeOrderIfPossible createSetStatusDeliveredForCargoAndFinilizeOrderIfPossible() {
-        return new SetStatusDeliveredForCargoAndFinilizeOrderIfPossible();
+    public SetStatusRestingForDriver createSetStatusRestingForDriver() {
+        return new SetStatusRestingForDriver();
     }
 
     /**
@@ -101,27 +85,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetStatusDrivingForDriverResponse }
+     * Create an instance of {@link SetStatusDeliveredForCargoAndFinilizeOrderIfPossibleResponse }
      * 
      */
-    public SetStatusDrivingForDriverResponse createSetStatusDrivingForDriverResponse() {
-        return new SetStatusDrivingForDriverResponse();
+    public SetStatusDeliveredForCargoAndFinilizeOrderIfPossibleResponse createSetStatusDeliveredForCargoAndFinilizeOrderIfPossibleResponse() {
+        return new SetStatusDeliveredForCargoAndFinilizeOrderIfPossibleResponse();
     }
 
     /**
-     * Create an instance of {@link SetStatusRestingForDriver }
+     * Create an instance of {@link ShiftBegginedForDriverResponse }
      * 
      */
-    public SetStatusRestingForDriver createSetStatusRestingForDriver() {
-        return new SetStatusRestingForDriver();
-    }
-
-    /**
-     * Create an instance of {@link GetDriverInfoResponse }
-     * 
-     */
-    public GetDriverInfoResponse createGetDriverInfoResponse() {
-        return new GetDriverInfoResponse();
+    public ShiftBegginedForDriverResponse createShiftBegginedForDriverResponse() {
+        return new ShiftBegginedForDriverResponse();
     }
 
     /**
@@ -133,11 +109,75 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ShiftBegginedForDriverResponse }
+     * Create an instance of {@link DriverInfo }
      * 
      */
-    public ShiftBegginedForDriverResponse createShiftBegginedForDriverResponse() {
-        return new ShiftBegginedForDriverResponse();
+    public DriverInfo createDriverInfo() {
+        return new DriverInfo();
+    }
+
+    /**
+     * Create an instance of {@link City }
+     * 
+     */
+    public City createCity() {
+        return new City();
+    }
+
+    /**
+     * Create an instance of {@link GetDriverInfoResponse }
+     * 
+     */
+    public GetDriverInfoResponse createGetDriverInfoResponse() {
+        return new GetDriverInfoResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetStatusDrivingForDriverResponse }
+     * 
+     */
+    public SetStatusDrivingForDriverResponse createSetStatusDrivingForDriverResponse() {
+        return new SetStatusDrivingForDriverResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetStatusPickedUpForCargoResponse }
+     * 
+     */
+    public SetStatusPickedUpForCargoResponse createSetStatusPickedUpForCargoResponse() {
+        return new SetStatusPickedUpForCargoResponse();
+    }
+
+    /**
+     * Create an instance of {@link Waypoint }
+     * 
+     */
+    public Waypoint createWaypoint() {
+        return new Waypoint();
+    }
+
+    /**
+     * Create an instance of {@link SetStatusRestingForDriverResponse }
+     * 
+     */
+    public SetStatusRestingForDriverResponse createSetStatusRestingForDriverResponse() {
+        return new SetStatusRestingForDriverResponse();
+    }
+
+    /**
+     * Create an instance of {@link Cargo }
+     * 
+     */
+    public Cargo createCargo() {
+        return new Cargo();
+    }
+
+    /**
+     * Create an instance of {@link SetStatusPickedUpForCargo }
+     * 
+     */
+    public SetStatusPickedUpForCargo createSetStatusPickedUpForCargo() {
+        return new SetStatusPickedUpForCargo();
     }
 
     /**

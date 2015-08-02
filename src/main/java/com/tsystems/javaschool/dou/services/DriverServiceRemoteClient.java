@@ -4,6 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.xml.ws.WebServiceRef;
 
 import com.tsystems.javaschool.dou.services.qualifiers.RemoteServerClient;
+import com.tsystems.javaschool.logiweb.webservices.DriverInfo;
 import com.tsystems.javaschool.logiweb.webservices.WsDriver;
 import com.tsystems.javaschool.logiweb.webservices.WsDriverImplService;
 
@@ -30,11 +31,25 @@ public class DriverServiceRemoteClient implements IDriverService {
     }
     
     @Override
-    public String getDriverInfo(int driverEmployeeId) {
-        if (driverEmployeeId == 0) return "";
+    public void setStatusDeliveredForCargoAndFinilizeOrderIfPossible(int cargoId) {
+        WsDriver driverWebService = service.getWsDriverImplPort();
+        driverWebService.setStatusDeliveredForCargoAndFinilizeOrderIfPossible(cargoId);        
+    }
+
+    @Override
+    public void setStatusPickedUpForCargo(int cargoId) {
+        WsDriver driverWebService = service.getWsDriverImplPort();
+        driverWebService.setStatusPickedUpForCargo(cargoId);        
+    }
+
+    @Override
+    public DriverInfo getDriverInfo(int driverEmployeeId) {
+        if (driverEmployeeId == 0) return null;
         
         WsDriver driverWebService = service.getWsDriverImplPort();
         return driverWebService.getDriverInfo(driverEmployeeId);
     }
+    
+    
 
 }

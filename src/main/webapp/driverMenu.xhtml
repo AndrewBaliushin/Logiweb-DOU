@@ -1,0 +1,127 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core">
+
+<h:body>
+	<ui:composition template="/WEB-INF/templates/default.xhtml">
+
+		<ui:define name="title">
+            Driver menu
+        </ui:define>
+
+		<ui:define name="content">
+			<h1 class="text-center">Driver services</h1>
+
+			<div class="row">
+				<div class="large-10 large-centered columns">
+
+					<div class="panel callout radius">
+						<h4>Driver info</h4>
+						Employee id#<h:outputText value="#{driverMenuController.driverInfo.employeeId}" /><br/>
+						
+						<h:outputText value="#{driverMenuController.driverInfo.name}" />&#160;					
+						<h:outputText value="#{driverMenuController.driverInfo.surname}" /><br/>
+
+						Working hours in this month:
+						<h:outputText value="#{driverMenuController.driverInfo.workingHoursInThisMonth}">
+							<f:convertNumber pattern="#0.0" />
+						</h:outputText><br/>
+						
+						Status:
+						<h:outputText id="driverStatus" value="#{driverMenuController.driverInfo.cutrrentStatus.value()}" />
+
+					</div>
+					<!-- /info -->
+					
+					<!-- Driver status buttons -->
+					<div class="row collapse">
+						<div class="small-12 columns">
+						    <h:form>
+						        <c:set var="dStatus" value="#{driverMenuController.driverInfo.cutrrentStatus.value()}"/>       
+						        <c:choose>
+						          <c:when test="#{dStatus == 'RESTING_EN_ROUT'}">
+						              <h:commandButton id="stDriving" action="#{driverMenuController.setStatusDrivingForDriver()}" value="Change status to 'Driving'" styleClass="button">
+                                        <f:ajax execute="stDriving" render="@form driverStatus"></f:ajax>
+                                      </h:commandButton>
+						          </c:when>
+						          <c:when test="#{dStatus == 'DRIVING'}">
+						              <h:commandButton id="stRest" value="Change status to 'Resting'" action="#{driverMenuController.setStatusRestingForDriver()}" styleClass="button info">
+                                        <f:ajax execute="stRest" render="@form driverStatus"></f:ajax>
+                                      </h:commandButton>
+						          </c:when>
+						        </c:choose>
+                            </h:form>
+						</div>
+					</div>
+					<!-- /Driver status buttons -->
+					   
+					<h:form>
+					<table id="cargoTable">
+						<thead>
+							<tr>
+								<th>Cargo id</th>
+								<th>Title</th>
+								<th>Operation</th>
+								<th>City</th>
+								<th>Status/Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="waypoint"
+								items="#{driverMenuController.driverInfo.routeInformation.bestOrderOfDelivery}">
+								<tr>
+									<td><h:outputText value="#{waypoint.cargo.id}" /></td>
+									<td><h:outputText value="#{waypoint.cargo.title}" /></td>
+									<td><h:outputText value="#{waypoint.operation}" /></td>
+									
+									<td>
+									   <c:choose>
+											<c:when test="#{waypoint.operation == 'PICKUP'}">
+												    <h:outputText value="#{waypoint.cargo.originCity.name}" />
+											</c:when>
+											<c:when test="#{waypoint.operation == 'DELIVER'}">
+												<h:outputText value="#{waypoint.cargo.destinationCity.name}" />
+											</c:when>
+										</c:choose>
+										</td>
+
+									<td>
+									       <c:set var="cid" value="#{waypoint.cargo.id}"/>									       
+										   <c:choose>
+												<c:when test="#{waypoint.operation == 'PICKUP' and waypoint.cargo.status == 'WAITING_FOR_PICKUP'}">
+	                                                        <h:commandButton id="pickedup_#{cid}" action="#{driverMenuController.setStatusPickedUpForCargo(cid)}" value="Pickup" 
+	                                                        styleClass="button round cargoAction success">
+	                                                               <f:ajax execute="pickedup_#{cid}" render="@form"></f:ajax>
+	                                                             </h:commandButton>
+	                                            </c:when>
+	                                            <c:when test="#{waypoint.operation == 'DELIVER' and waypoint.cargo.status == 'PICKED_UP'}">
+	                                                        <h:commandButton id="deliver_#{cid}" value="Deliver" action="#{driverMenuController.setStatusDeliveredForCargoAndFinilizeOrderIfPossible(cid)}" 
+	                                                        styleClass="button round cargoAction success">
+	                                                            <f:ajax execute="deliver_#{cid}" render="@form"></f:ajax>
+	                                                         </h:commandButton>
+	                                            </c:when>
+												<c:otherwise>
+													<h:outputText value="#{waypoint.cargo.status}" />
+												</c:otherwise>
+											</c:choose>
+									
+									</td>
+
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					</h:form>
+
+				</div>
+			</div>
+
+
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+
+</html>
