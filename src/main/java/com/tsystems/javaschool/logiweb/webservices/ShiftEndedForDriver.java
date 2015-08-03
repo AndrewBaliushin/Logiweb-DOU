@@ -8,12 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for shiftBegginedForDriver complex type.
+ * <p>Java class for shiftEndedForDriver complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="shiftBegginedForDriver">
+ * &lt;complexType name="shiftEndedForDriver">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -27,10 +27,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "shiftBegginedForDriver", propOrder = {
+@XmlType(name = "shiftEndedForDriver", propOrder = {
     "driverEmployeeId"
 })
-public class ShiftBegginedForDriver {
+public class ShiftEndedForDriver {
 
     @XmlElement(name = "DriverEmployeeId")
     protected int driverEmployeeId;

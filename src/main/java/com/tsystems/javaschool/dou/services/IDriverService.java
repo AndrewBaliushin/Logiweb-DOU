@@ -13,5 +13,19 @@ public interface IDriverService {
     public void setStatusPickedUpForCargo(int cargoId);
 
     public DriverInfo getDriverInfo(int driverEmployeeId);
+    
+    /**
+     * Start new shift.
+     * @param driverEmployeeId
+     * @throws IllegalStateException if shift is already started.
+     */
+    public void startDriverShift(int driverEmployeeId) throws IllegalStateException ;
+    
+    /**
+     * End current shift.
+     * @param driverEmployeeId
+     * @throws IllegalStateException if there is no unfinished shift.
+     */
+    public void endDriverShift(int driverEmployeeId) throws IllegalStateException ;
 
 }

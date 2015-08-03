@@ -5,6 +5,8 @@ import javax.xml.ws.WebServiceRef;
 
 import com.tsystems.javaschool.dou.services.qualifiers.RemoteServerClient;
 import com.tsystems.javaschool.logiweb.webservices.DriverInfo;
+import com.tsystems.javaschool.logiweb.webservices.InvalidRequestException_Exception;
+import com.tsystems.javaschool.logiweb.webservices.NotFoundException_Exception;
 import com.tsystems.javaschool.logiweb.webservices.WsDriver;
 import com.tsystems.javaschool.logiweb.webservices.WsDriverImplService;
 
@@ -44,11 +46,35 @@ public class DriverServiceRemoteClient implements IDriverService {
 
     @Override
     public DriverInfo getDriverInfo(int driverEmployeeId) {
-        if (driverEmployeeId == 0) return null;
-        
         WsDriver driverWebService = service.getWsDriverImplPort();
-        return driverWebService.getDriverInfo(driverEmployeeId);
+        try {
+            return driverWebService.getDriverInfo(driverEmployeeId);
+        } catch (NotFoundException_Exception e) {
+            return null;
+        }
     }
+
+    @Override
+    public void startDriverShift(int driverEmployeeId) throws IllegalStateException {
+        WsDriver driverWebService = service.getWsDriverImplPort();
+        try {
+            driverWebService.shiftBegginedForDriver(driverEmployeeId);
+        } catch (InvalidRequestException_Exception e) {
+            throw new IllegalStateException();
+        }        
+    }
+
+    @Override
+    public void endDriverShift(int driverEmployeeId) throws IllegalStateException {
+        WsDriver driverWebService = service.getWsDriverImplPort();
+        try {
+            driverWebService.shiftEndedForDriver(driverEmployeeId);
+        } catch (InvalidRequestException_Exception e) {
+            throw new IllegalStateException();
+        }       
+    }
+    
+    
     
     
 

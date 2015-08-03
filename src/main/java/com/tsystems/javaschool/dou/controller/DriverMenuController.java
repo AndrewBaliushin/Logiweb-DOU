@@ -2,8 +2,10 @@ package com.tsystems.javaschool.dou.controller;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import com.tsystems.javaschool.dou.services.IDriverService;
@@ -35,7 +37,14 @@ public class DriverMenuController {
     
     public String initDriverInfo() {
         driverInfo = driverService.getDriverInfo(driverEmpoloyeeId);   
-        return "driverMenu?faces-redirect=true";
+        
+        if (driverInfo == null) {
+            FacesContext.getCurrentInstance().addMessage("error",
+                    new FacesMessage("Driver not found"));
+            return "login";
+        } else {
+            return "driverMenu?faces-redirect=true";
+        }
     }
     
     public DriverInfo getDriverInfo() {
@@ -68,6 +77,16 @@ public class DriverMenuController {
         for (Waypoint w : waypoints) {
             if (w.getCargo().getId() == cargoId) w.getCargo().setStatus(newStatus);
         }
+    }
+    
+    public void startDriverShift() {
+        driverService.startDriverShift(driverEmpoloyeeId);
+        driverInfo.setCutrrentStatus(DriverStatus.RESTING_EN_ROUT);
+    }
+    
+    public void endDriverShift() {
+        driverService.endDriverShift(driverEmpoloyeeId);
+        driverInfo.setCutrrentStatus(DriverStatus.FREE);
     }
     
 }

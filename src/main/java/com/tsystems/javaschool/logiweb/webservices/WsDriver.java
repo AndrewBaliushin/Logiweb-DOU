@@ -59,8 +59,23 @@ public interface WsDriver {
     /**
      * 
      * @param driverEmployeeId
+     * @throws InvalidRequestException_Exception
+     */
+    @WebMethod
+    @RequestWrapper(localName = "shiftEndedForDriver", targetNamespace = "http://webservices.logiweb.javaschool.tsystems.com/", className = "com.tsystems.javaschool.logiweb.webservices.ShiftEndedForDriver")
+    @ResponseWrapper(localName = "shiftEndedForDriverResponse", targetNamespace = "http://webservices.logiweb.javaschool.tsystems.com/", className = "com.tsystems.javaschool.logiweb.webservices.ShiftEndedForDriverResponse")
+    public void shiftEndedForDriver(
+        @WebParam(name = "DriverEmployeeId", targetNamespace = "")
+        int driverEmployeeId)
+        throws InvalidRequestException_Exception
+    ;
+
+    /**
+     * 
+     * @param driverEmployeeId
      * @return
      *     returns com.tsystems.javaschool.logiweb.webservices.DriverInfo
+     * @throws NotFoundException_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
@@ -68,7 +83,9 @@ public interface WsDriver {
     @ResponseWrapper(localName = "getDriverInfoResponse", targetNamespace = "http://webservices.logiweb.javaschool.tsystems.com/", className = "com.tsystems.javaschool.logiweb.webservices.GetDriverInfoResponse")
     public DriverInfo getDriverInfo(
         @WebParam(name = "DriverEmployeeId", targetNamespace = "")
-        int driverEmployeeId);
+        int driverEmployeeId)
+        throws NotFoundException_Exception
+    ;
 
     /**
      * 
@@ -84,15 +101,15 @@ public interface WsDriver {
     /**
      * 
      * @param driverEmployeeId
-     * @param isBehindWheel
+     * @throws InvalidRequestException_Exception
      */
     @WebMethod
     @RequestWrapper(localName = "shiftBegginedForDriver", targetNamespace = "http://webservices.logiweb.javaschool.tsystems.com/", className = "com.tsystems.javaschool.logiweb.webservices.ShiftBegginedForDriver")
     @ResponseWrapper(localName = "shiftBegginedForDriverResponse", targetNamespace = "http://webservices.logiweb.javaschool.tsystems.com/", className = "com.tsystems.javaschool.logiweb.webservices.ShiftBegginedForDriverResponse")
     public void shiftBegginedForDriver(
         @WebParam(name = "DriverEmployeeId", targetNamespace = "")
-        int driverEmployeeId,
-        @WebParam(name = "IsBehindWheel", targetNamespace = "")
-        boolean isBehindWheel);
+        int driverEmployeeId)
+        throws InvalidRequestException_Exception
+    ;
 
 }

@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core">
+
+<!-- Driver status buttons -->
+<div class="row collapse">
+
+	<c:set var="dStatus"
+		value="#{driverMenuController.driverInfo.cutrrentStatus.value()}" />
+
+	<div class="small-12 columns">
+		<h:form>
+			<c:choose>
+				<c:when test="#{dStatus == 'RESTING_EN_ROUT'}">
+					<h:commandButton id="stDriving"
+						action="#{driverMenuController.setStatusDrivingForDriver()}"
+						value="Change status to 'Driving'" styleClass="button">
+						<f:ajax execute="stDriving" render="@form driverStatus"></f:ajax>
+					</h:commandButton>
+				</c:when>
+				<c:when test="#{dStatus == 'DRIVING'}">
+					<h:commandButton id="stRest" value="Change status to 'Resting'"
+						action="#{driverMenuController.setStatusRestingForDriver()}"
+						styleClass="button info">
+						<f:ajax execute="stRest" render="@form driverStatus"></f:ajax>
+					</h:commandButton>
+				</c:when>
+			</c:choose>
+		</h:form>
+	</div>
+
+	<!-- Shift begin\end -->
+	<div class="small-12 columns">
+		<h:form>
+			<c:choose>
+				<c:when test="#{dStatus == 'FREE'}">
+					<h:commandButton id="startShift"
+						action="#{driverMenuController.startDriverShift()}"
+						value="Beggin new shift" styleClass="button">
+						<f:ajax execute="startShift" render="@all driverStatus"></f:ajax>
+					</h:commandButton>
+				</c:when>
+				<c:when test="#{dStatus != 'FREE'}">
+					<h:commandButton id="endShift" value="End shift"
+						action="#{driverMenuController.endDriverShift()}"
+						styleClass="button">
+						<f:ajax execute="endShift" render="@all driverStatus"></f:ajax>
+					</h:commandButton>
+				</c:when>
+			</c:choose>
+		</h:form>
+	</div>
+	<!-- /Shift begin\end -->
+	
+</div>
+<!-- /Driver status buttons -->
+
+</html>

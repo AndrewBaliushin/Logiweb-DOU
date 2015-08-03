@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core">
+
+<div class="panel callout radius">
+	<h4>Driver info</h4>
+	Employee id#
+	<h:outputText value="#{driverMenuController.driverInfo.employeeId}" />
+	<br />
+
+	<h:outputText value="#{driverMenuController.driverInfo.name}" />
+	&#160;
+	<h:outputText value="#{driverMenuController.driverInfo.surname}" />
+	<br /> Working hours in this month:
+	<h:outputText
+		value="#{driverMenuController.driverInfo.workingHoursInThisMonth}">
+		<f:convertNumber pattern="#0.0" />
+	</h:outputText>
+	<br /> Status:
+	<h:outputText id="driverStatus"
+		value="#{driverMenuController.driverInfo.cutrrentStatus.value()}" />
+
+</div>
+
+</html>
